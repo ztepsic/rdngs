@@ -34,6 +34,32 @@ namespace Readings.Domain {
         /// </summary>
         public DateTime AddedOn { get { return addedOn; } }
 
+        /// <summary>
+        /// The date when the book was updated in UTC.
+        /// </summary>
+        private DateTime updatedOn;
+
+        /// <summary>
+        /// Gets the date when the book was updated in UTC
+        /// </summary>
+        public DateTime UpdatedOn { get { return UpdatedOn; } }
+
+        /// <summary>
+        /// An indicator that idicates if the book is published
+        /// </summary>
+        private bool published;
+
+        /// <summary>
+        /// Gets or Sets an indicator that indicates if the book is published
+        /// </summary>
+        public bool Published {
+            get { return published; }
+            set {
+                published = value;
+                setUpdatedOn();
+            }
+        }
+
         #endregion
 
         #region Constructors and Init
@@ -46,11 +72,19 @@ namespace Readings.Domain {
             this.title = title;
 
             addedOn = DateTime.UtcNow;
+            updatedOn = addedOn;
         }
 
         #endregion
 
         #region Methods
+
+        /// <summary>
+        /// Sets the date when the book was updated in UTC.
+        /// </summary>
+        private void setUpdatedOn() {
+            updatedOn = DateTime.UtcNow;
+        }
 
         #endregion
 
