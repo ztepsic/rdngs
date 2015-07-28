@@ -43,6 +43,10 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.2\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -51,6 +55,14 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.2\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.2\lib\net45\System.Web.Http.WebHost.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -120,7 +132,16 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BookAuthorsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InfoController.cs" />
+    <Compile Include="Controllers\ReadingsController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="GeneralResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GeneralResource.resx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -128,25 +149,41 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="assets\css\less\bootstrap.css">
-      <DependentUpon>bootstrap.less</DependentUpon>
-    </Content>
-    <Content Include="assets\css\less\bootstrap.min.css">
+    <Content Include="assets\css\bootstrap.css" />
+    <Content Include="assets\css\bootstrap.min.css">
       <DependentUpon>bootstrap.css</DependentUpon>
     </Content>
+    <Content Include="assets\css\style.css" />
+    <Content Include="assets\css\style.min.css">
+      <DependentUpon>style.css</DependentUpon>
+    </Content>
+    <Content Include="assets\fonts\fontawesome-webfont.svg" />
     <Content Include="assets\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="assets\css\font-awesome.css" />
+    <Content Include="assets\css\font-awesome.min.css" />
+    <Content Include="assets\css\index.html" />
+    <Content Include="assets\js\bootstrap.js" />
+    <Content Include="assets\js\bootstrap.min.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="assets\css\less\style.less" />
     <Content Include="assets\css\less\bootstrap.less" />
     <Content Include="assets\css\less\variables.less" />
-    <Content Include="assets\css\less\bootstrap.css.map">
-      <DependentUpon>bootstrap.css</DependentUpon>
-    </Content>
     <Content Include="assets\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="assets\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="assets\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="assets\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="assets\css\bootstrap.css.map">
+      <DependentUpon>bootstrap.css</DependentUpon>
+    </Content>
+    <Content Include="assets\fonts\fontawesome-webfont.eot" />
+    <Content Include="assets\fonts\fontawesome-webfont.ttf" />
+    <Content Include="assets\fonts\fontawesome-webfont.woff" />
+    <Content Include="assets\fonts\fontawesome-webfont.woff2" />
+    <Content Include="assets\fonts\FontAwesome.otf" />
+    <Content Include="assets\css\style.css.map">
+      <DependentUpon>style.css</DependentUpon>
+    </Content>
     <None Include="assets\js\jquery-1.10.2.intellisense.js" />
     <Content Include="assets\js\jquery-1.10.2.js" />
     <Content Include="assets\js\jquery-1.10.2.min.js" />
@@ -172,14 +209,30 @@
     <Content Include="Views\Shared\_MasterLayout.cshtml" />
     <Content Include="assets\js\jquery-1.10.2.min.map" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\HeaderPartial.cshtml" />
+    <Content Include="Views\Shared\FooterPartial.cshtml" />
+    <Content Include="Views\Readings\Book.cshtml" />
+    <Content Include="Views\Readings\Reading.cshtml" />
+    <Content Include="Views\Shared\Ads\AdsenseLeaderboard.cshtml" />
+    <Content Include="Views\Shared\Ads\AdsenseMedRectangle.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="assets\img\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\BookAuthors\" />
+    <Folder Include="Views\Books\" />
+    <Folder Include="Views\Info\" />
+    <Folder Include="Views\Search\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="GeneralResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>GeneralResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

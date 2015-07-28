@@ -113,7 +113,7 @@
     "EnableChainCompilation": true,
     "GenerateSourceMaps": true,
     "MinifyInPlace": false,
-    "OutputDirectory": null,
+    "OutputDirectory": "../",
     "ProcessSourceMapsForEditorEnhancements": true,
     "ShowPreviewPane": true,
     "StrictMath": false

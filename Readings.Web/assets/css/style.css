@@ -1,0 +1,108 @@
+﻿body {
+  margin-top: 60px;
+}
+footer {
+  margin: 12px 0 16px 0;
+  padding-top: 12px;
+  border-top: 5px solid #eeeeee;
+}
+#logo {
+  margin: 10px auto;
+  text-align: center;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #777777;
+}
+article h2,
+article h3,
+article h4,
+article h5,
+article h6 {
+  border-bottom: none;
+}
+article > header {
+  margin-bottom: 12px;
+  padding-bottom: 6px;
+  border-bottom: 5px solid #eeeeee;
+}
+#header-logo {
+  width: 80px;
+}
+header .navbar-nav li a {
+  text-transform: uppercase;
+  font-weight: bolder;
+}
+header .navbar-brand {
+  padding-top: 2px;
+}
+ul.follow-us > li.desc-label {
+  padding: 15px 5px;
+  color: #605f5d;
+  line-height: 20px;
+}
+ul.follow-us > li > a {
+  padding: 10px 5px;
+}
+.navbar-nav.follow-us > li.icon-facebook > a:hover,
+.navbar-nav.follow-us > li.icon-facebook > a:focus {
+  background-color: white;
+  color: #3C5B97;
+}
+@media (min-width: 992px) {
+  form#search.navbar-form {
+    width: 32%;
+  }
+}
+@media (min-width: 1200px) {
+  form#search.navbar-form {
+    width: 42%;
+  }
+}
+#search .input-group-btn {
+  width: 1%;
+}
+.letters-navigation {
+  margin: 10px auto 0 auto;
+  background: url(img/bg-sub.gif) repeat-x 0 100%;
+  overflow: hidden;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+.letters-navigation ul {
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+  display: block;
+}
+.letters-navigation ul li {
+  margin: 0 1px 0 0;
+  float: left;
+}
+.letters-navigation ul span {
+  padding: 0 9px;
+  line-height: 26px;
+  float: left;
+  cursor: pointer;
+  background: url(img/bg-sub-r.gif) no-repeat 100% 0;
+}
+.letters-navigation ul a {
+  color: #636363;
+  font-size: 12px;
+  float: left;
+  background: url(img/bg-sub-l.gif) no-repeat 0 0;
+}
+.letters-navigation ul .active a,
+.letters-navigation ul a:hover {
+  color: #000;
+  text-decoration: none;
+  background: url(img/bg-sub-l-a.gif) no-repeat 0 0;
+}
+.letters-navigation ul .active a span,
+.letters-navigation ul a:hover span {
+  background: url(img/bg-sub-r-a.gif) no-repeat 100% 0;
+}
+/*# sourceMappingURL=style.css.map */

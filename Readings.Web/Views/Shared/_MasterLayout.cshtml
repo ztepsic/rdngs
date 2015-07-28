@@ -4,12 +4,14 @@
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>@ViewBag.Title - My ASP.NET Application</title>
+        <title>Lektire.Co - Lektire za osnovnu i srednju školu</title>
         @Styles.Render("~/bundles/css")
         @Scripts.Render("~/bundles/js/modernizr")
     </head>
     <body>
+        @Html.Partial("HeaderPartial")
         @RenderBody()
+        @Html.Partial("FooterPartial")
 
         @Scripts.Render("~/bundles/js/jquery")
         @Scripts.Render("~/bundles/js/bootstrap")
