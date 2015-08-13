@@ -31,14 +31,14 @@ article > header {
   border-bottom: 5px solid #eeeeee;
 }
 #header-logo {
-  width: 80px;
+  width: 110px;
 }
 header .navbar-nav li a {
   text-transform: uppercase;
   font-weight: bolder;
 }
 header .navbar-brand {
-  padding-top: 2px;
+  padding-top: 10px;
 }
 ul.follow-us > li.desc-label {
   padding: 15px 5px;
