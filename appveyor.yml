@@ -12,8 +12,6 @@ before_build:
 build:
   publish_wap: true
   verbosity: minimal
-after_build:
-- Readings_build_nuget.bat
 artifacts:
 - path: packages
   name: Readings.Packages.$(APPVEYOR_BUILD_VERSION)
