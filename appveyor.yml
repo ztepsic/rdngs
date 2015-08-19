@@ -10,10 +10,9 @@ assembly_info:
 before_build:
 - nuget restore
 build:
-  publish_wap: true
+  #publish_wap: true	# Package Web Applications for Web Deploy
+  publish_wap_xcopy: true	# Package Web Applications for XCopy deployment
   verbosity: minimal
 artifacts:
 - path: packages
   name: Readings.Packages.$(APPVEYOR_BUILD_VERSION)
-- path: Readings.$(APPVEYOR_BUILD_VERSION).nupkg
-  name: Readings.$(APPVEYOR_BUILD_VERSION).nupkg
