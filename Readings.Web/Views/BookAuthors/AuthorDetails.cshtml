@@ -1,0 +1,66 @@
+﻿@model Readings.Domain.BookAuthor
+
+@{
+    ViewBag.Title = "Reading " +  Model.FullName;
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            @Html.Partial("Ads/AdsenseLeaderboard")
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 text-center">
+            Prethodna verzija
+        </div>
+        <div class="col-md-6 text-center">
+            Sljedeća verzija
+        </div>
+    </div>
+
+    <article class="row">
+        <header class="col-md-12">
+            <h1>@Model.FullName</h1>
+        </header>
+        <div class="col-md-8">
+            @Model.ShortBiography
+        </div> <!-- END .col-md-8 -->
+        <aside class="col-md-4" style="background: #e6e7e8;">
+            <section class="text-left">
+                @Html.Partial("Ads/AdsenseMedRectangle")
+            </section>
+            <section>
+                <h2>Sadržaj</h2>
+                <p>
+                    <ul>
+                        <li>Bilješka o piscu</li>
+                        <li>Mjesto radnje</li>
+                        <li>Vrijeme radnje</li>
+                        <li>Tema</li>
+                        <li>Kratki sadržaj</li>
+                    </ul>
+                </p>
+                <h2>Ostale verzije</h2>
+                <p>
+                    <ul>
+                        <li>Verzija 2</li>
+                        <li>Verzija 3</li>
+                        <li>Verzija 4</li>
+                    </ul>
+                </p>
+                <h2>Preporučene lektire</h2>
+                <p>
+                    <ul>
+                        <li>Lektira 1</li>
+                        <li>Lektira 2</li>
+                        <li>Lektira 3</li>
+                    </ul>
+                </p>
+            </section>
+        </aside> <!-- END .col-md-4 -->
+    </article>
+</div>

@@ -1,16 +1,6 @@
 DropTables.sql
-DbSchemas_creation.sql
-Tags.sql
 
-\App\App.AppTenants.sql
-\Game\Game.GameCategories.sql
-\Game\Game.GameProviders.sql
-\Game\Game.Games.sql
-\Game\Game.MediaResources.sql
-\Game\Game.GamesTags.sql
-\Game\Game.GamesGameCategories.sql
-\Game\Game.GameInstanceCategories.sql
-\Game\Game.GameInstances.sql
-\Game\Game.GameInstancesTags.sql
-\Game\Game.SecondaryGameInstCategories.sql
-\Game\Game.GameCatToGameInstCatMapping.sql
+ArticleSections.sql
+BookAuthors.sql
+
+

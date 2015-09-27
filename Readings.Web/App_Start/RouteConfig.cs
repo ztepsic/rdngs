@@ -7,6 +7,12 @@ namespace Readings.Web {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "BookAuthor",
+                url: "pisac/{bookAuthorId}/{bookAuthorNameSlug}",
+                defaults: new { controller = "BookAuthors", action = "AuthorDetails" }
+            );
+
+            routes.MapRoute(
                 name: "Reading",
                 url: "lektira/{bookId}/{bookTitleSlug}/{readingVersion}",
                 defaults: new { controller = "Readings", action = "Reading" }

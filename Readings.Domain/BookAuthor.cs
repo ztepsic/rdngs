@@ -1,4 +1,5 @@
-﻿using Zed.Domain;
+﻿using System;
+using Zed.Domain;
 
 namespace Readings.Domain {
     /// <summary>
@@ -17,7 +18,7 @@ namespace Readings.Domain {
         /// <summary>
         /// Book author surname
         /// </summary>
-        private readonly string surname;
+        private string surname;
 
         /// <summary>
         /// Gets book author surname
@@ -25,13 +26,38 @@ namespace Readings.Domain {
         public string Surname { get { return surname; } }
 
         /// <summary>
-        /// Gets or Sets author's biography
+        /// Gets book author full name
         /// </summary>
-        public string Biography { get; set; }
+        public string FullName { get { return String.Format("{0} {1}", Name, Surname); } }
+
+        /// <summary>
+        /// Gets or Sets author's short biography
+        /// </summary>
+        public string ShortBiography { get; set; }
+
+        /// <summary>
+        /// Book author biography source name
+        /// </summary>
+        public string BiographySrcName { get; set; }
+
+        /// <summary>
+        /// Book author biography source url
+        /// </summary>
+        public string BiographySrcUrl { get; set; }
+
+        /// <summary>
+        /// Article
+        /// </summary>
+        public ArticleSection Article { get; set; }
 
         #endregion
 
-        #region Constructors and
+        #region Constructors and Init
+
+        /// <summary>
+        /// Default constructor that creates a new instance of BookAuthor class.
+        /// </summary>
+        private BookAuthor() { }
 
         /// <summary>
         /// Creates a book author

@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using StackExchange.Profiling;
+<!DOCTYPE html>
 <html lang="hr">
     <head>
         <meta charset="utf-8" />
@@ -16,5 +17,6 @@
         @Scripts.Render("~/bundles/js/jquery")
         @Scripts.Render("~/bundles/js/bootstrap")
         @RenderSection("scripts", required: false)
+        @MiniProfiler.RenderIncludes()
     </body>
 </html>
