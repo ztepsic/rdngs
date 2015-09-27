@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Reading " +  Model.FullName;
+
 }
 
 <div class="container">
@@ -27,7 +28,14 @@
             <h1>@Model.FullName</h1>
         </header>
         <div class="col-md-8">
-            @Model.ShortBiography
+            @Html.Raw(Model.Article.Content)
+            
+            @Html.Partial("_BookAuthorArticleSections", Model.Article.ChildSections)
+        
+            <footer>
+                Izvor: <a href="@Model.BiographySrcUrl" rel="nofollow" title="@Model.BiographySrcName">@Model.BiographySrcName</a>
+            </footer>
+
         </div> <!-- END .col-md-8 -->
         <aside class="col-md-4" style="background: #e6e7e8;">
             <section class="text-left">

@@ -4,7 +4,7 @@ create table dbo.BookAuthors (
 		constraint PK_BookAuth_Id primary key
 ,	Name nvarchar(30)
 ,	Surname nvarchar(30) not null
-,	ShortBiography text
+,	ShortBiography ntext
 ,	BiographyRootArticleSectionId int
 ,	BiographySrcName nvarchar(30)
 ,	BiographySrcUrl nvarchar(200)

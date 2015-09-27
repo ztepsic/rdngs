@@ -4,7 +4,7 @@ create table dbo.ArticleSections (
 		constraint PK_ArticleSection_Id primary key
 ,	ParentId int
 ,	Title nvarchar(30) not null
-,	Content text not null
+,	Content ntext not null
 ,	Level int not null default 0
 ,	[Order] int not null default 1
 ,	constraint FK_ArticleSection_ParentId

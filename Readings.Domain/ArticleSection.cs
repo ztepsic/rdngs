@@ -11,36 +11,40 @@ namespace Readings.Domain {
         #region Fields and Properties
 
         /// <summary>
-        /// Article section title
-        /// </summary>
-        private string title;
-
-        /// <summary>
         /// Gets article section title
         /// </summary>
-        public string Title { get { return title; } }
+        public string Title { get; private set; }
 
         /// <summary>
         /// Gets or Sets article section content
         /// </summary>
         public string Content { get; set; }
 
-        //private ArticleSection parent;
+        /// <summary>
+        /// Gets article section parent
+        /// </summary>
+        public int? ParentId { get; private set; }
+
+        /// <summary>
+        /// Article section parent
+        /// </summary>
+        private ArticleSection parent;
 
         /// <summary>
         /// Gets article section parent
         /// </summary>
-        public ArticleSection Parent { get; private set; }
-        //public ArticleSection Parent {
-        //    get { return parent; }
-        //    private set {
-        //        if (parent != value) {
-        //            parent.RemoveSection(this);
-        //            parent = value;
-        //            parent.AddSection(this);   
-        //        }
-        //    }
-        //}
+        public ArticleSection Parent {
+            get { return parent; }
+            private set {
+                parent = value;
+                if (parent != null) {
+                    ParentId = parent.Id;
+                } else {
+                    ParentId = null;
+                }
+            }
+        }
+        
 
         /// <summary>
         /// Gets child article sections
@@ -64,15 +68,17 @@ namespace Readings.Domain {
         /// <summary>
         /// Default constructor that creates a new instance of ArticleSection class.
         /// </summary>
-        private ArticleSection() { }
+        private ArticleSection() {
+            ChildSections = new List<ArticleSection>();
+        }
 
         /// <summary>
         /// Creates an article section instance
         /// </summary>
         /// <param name="title">Article section title</param>
-        public ArticleSection(string title) {
+        public ArticleSection(string title) : this() {
             if(string.IsNullOrEmpty(title)) throw new ArgumentNullException("title");
-            this.title = title;
+            this.Title = title;
             Level = 0;
             Order = 0;
         }
@@ -94,7 +100,7 @@ namespace Readings.Domain {
             var articleSection = new ArticleSection(sectionTitle) {
                 Content = sectionContent,
                 Level = Level + 1,
-                Order = ChildSections != null ? ChildSections.Count + 1 : 1,
+                Order = ChildSections.Count + 1,
                 Parent = this
             };
 
@@ -113,8 +119,6 @@ namespace Readings.Domain {
         public void AddSection(ArticleSection articleSectionSection) {
             if (articleSectionSection == null) throw new ArgumentNullException("articleSectionSection");
             if (this.Equals(articleSectionSection)) throw new InvalidOperationException("Can't add to itself.");
-
-            if (ChildSections == null) { ChildSections = new List<ArticleSection>(); }
 
             var requestedOrder = articleSectionSection.Order;
 
@@ -143,9 +147,11 @@ namespace Readings.Domain {
         public static void RemoveSection(ArticleSection articleSection) {
             if(articleSection == null) throw new ArgumentNullException("articleSection");
 
-            articleSection.Parent.ChildSections.Remove(articleSection);;
-            reorder(articleSection.Parent.ChildSections);
-            articleSection.Parent = null;
+            if (articleSection.Parent != null && articleSection.Parent.ChildSections.Count > 0) {
+                articleSection.Parent.ChildSections.Remove(articleSection); ;
+                reorder(articleSection.Parent.ChildSections);
+                articleSection.Parent = null;    
+            }
 
         }
 
@@ -170,7 +176,7 @@ namespace Readings.Domain {
         /// </summary>
         /// <param name="newParent">Parent which will contain this article section</param>
         public void MoveToParent(ArticleSection newParent) {
-            if (Parent == null) return;
+            if(newParent == null) throw new ArgumentNullException("newParent");
 
             this.Remove();
             newParent.AddSection(this);
@@ -188,7 +194,7 @@ namespace Readings.Domain {
         }
 
         public override string ToString() {
-            return String.Format("Id: {0}:{1}, Title: {2}, Lvl: {3}, Order: {4}", Parent.Id, Id, Title, Level, Order);
+            return String.Format("Id: {0}:{1}, Title: {2}, Lvl: {3}, Order: {4}", Parent != null ? Parent.Id.ToString() : "NULL", Id, Title, Level, Order);
         }
 
         #endregion

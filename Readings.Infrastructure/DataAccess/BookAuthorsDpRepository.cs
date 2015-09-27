@@ -3,6 +3,7 @@ using System.Linq;
 using Dapper;
 using Readings.Domain;
 using Zed.Data;
+using Zed.Domain;
 
 namespace Readings.Infrastructure.DataAccess {
     /// <summary>
@@ -46,44 +47,45 @@ namespace Readings.Infrastructure.DataAccess {
         /// <param name="id">Entitiy/Aggregare root identifier</param>
         /// <returns>BookAuthor entity/aggregare root</returns>
         public BookAuthor GetById(int id) {
-            var querySql = @"
+            const string querySql = @"
                 select *
                 from BookAuthors
                 where id = @BookAuthorId;
 
-                with Result as (
+                with ArticleSectionItems as (
                     select *
                     from ArticleSections
-                    where Id = @BookAuthorId
+                    where Id = (select BiographyRootArticleSectionId
+                                from BookAuthors
+                                where id = @BookAuthorId)
                     union all
                     select resultPlus1.*
                     from ArticleSections as ResultPlus1
-                    join Result on
-                        Result.Id = ResultPlus1.ParentId
+                    join ArticleSectionItems on
+                        ArticleSectionItems.Id = ResultPlus1.ParentId
                 )
-                select *
-                from Result
-                order by Level, [Order];
+                select Child.*
+                from ArticleSectionItems Child
+                left join ArticleSections Parent on
+                    Parent.Id = Child.ParentId
+                order by Parent.level, Parent.[order], Child.Level, Child.[Order];
             ";
+
 
             BookAuthor bookAuthor = null;
             using (var multi = DbConnection.QueryMultiple(querySql, new { BookAuthorId = id }, DbConnection.Transaction)) {
-               bookAuthor = multi.Read<BookAuthor>().Single();
-               var articleSections = multi.Read<ArticleSection>().ToList();
-                foreach (var articleSection in articleSections) {
-                    if (bookAuthor.Article == null) {
-                        bookAuthor.Article = articleSection;
+                bookAuthor = multi.Read<BookAuthor>().Single();
+                var articleSectionsDict = multi.Read<ArticleSection>().ToDictionary(x => x.Id);
+
+                foreach (var articleSectionItem in articleSectionsDict) {
+                    var articleSection = articleSectionItem.Value;
+                    if (bookAuthor.Article == null && articleSection.ParentId == null) {
+                        bookAuthor.Article = articleSectionItem.Value;
                     } else {
-                        
+                        articleSection.MoveToParent(articleSectionsDict[articleSection.ParentId ?? -1]);
                     }
                 }
             }
-
-            //return DbConnection.Query<BookAuthor>(
-            //    querySql,
-            //    new {BookAuthorId = id},
-            //    DbConnection.Transaction
-            //).FirstOrDefault();
 
             return bookAuthor;
         }

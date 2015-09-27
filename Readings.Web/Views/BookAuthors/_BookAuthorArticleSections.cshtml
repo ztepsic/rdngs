@@ -1,0 +1,22 @@
+﻿@model IList<Readings.Domain.ArticleSection>
+           
+@helper RenderArticleSection(IEnumerable<Readings.Domain.ArticleSection> articleSections) {
+    Func<int, string, object> headingTag = (level, text) => {
+        var headingLevel = level + 1 <= 6 ? (level + 1).ToString() : "6";
+        var builder = new TagBuilder("h" + headingLevel) { InnerHtml = text };
+        return new HtmlString(builder.ToString());
+    };
+
+    foreach (var articleSection in articleSections) {
+        <section>
+            <header>
+                @headingTag(articleSection.Level, articleSection.Title)
+            </header>
+            @Html.Raw(articleSection.Content)
+            @RenderArticleSection(articleSection.ChildSections)
+        </section>
+    }
+}
+
+@RenderArticleSection(Model)
+

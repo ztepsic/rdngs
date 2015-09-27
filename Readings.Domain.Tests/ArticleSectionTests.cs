@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
 
 namespace Readings.Domain.Tests {
     [TestFixture]
@@ -197,7 +198,26 @@ namespace Readings.Domain.Tests {
             // Assert
             CollectionAssert.Contains(articleSection3.ChildSections, articleSection22);
             Assert.AreEqual(articleSection3, articleSection22.Parent);
+            Assert.AreEqual(articleSection3, articleSection22.Parent);
+            Assert.AreEqual(articleSection3.Id, articleSection22.ParentId);
             
+        }
+
+
+        [Test]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void MoveToParent_NullParent_ExceptionTrhown() {
+            // Arrange
+            var rootArticle = new ArticleSection("ArticleSectionRootTitle") { Content = "ArticleSectionRootContent" };
+            var articleSection1 = rootArticle.AddSection("Section1Lvl1Title", "Section1Lv1Content");
+            var articleSection2 = rootArticle.AddSection("Section2Lvl1Title", "Section2Lv1Content");
+            var articleSection3 = rootArticle.AddSection("Section3Lvl1Title", "Section3Lv1Content");
+
+            // Act
+            articleSection1.MoveToParent(null);
+
+            // Assert
+
         }
 
 
