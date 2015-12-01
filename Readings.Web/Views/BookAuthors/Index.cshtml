@@ -1,0 +1,100 @@
+﻿@using PagedList.Mvc
+@using Zed.Utilities
+@model Readings.Web.Models.BookAuthors.IndexViewModel
+
+@{
+    ViewBag.Title = "Pisci" + " - popis autora lektira | " + @GeneralResource.SiteName;
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Pisci - popis autora lektira (abecedno)</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="letters-navigation">
+                <ul>
+                    <li class=""><a href="http://moje-lektire.tv-tube.net/lektire/slovo/0-9" title="0-9"><span>0-9</span></a></li>
+                    <li class=""><a href="http://moje-lektire.tv-tube.net/lektire/slovo/a" title="A"><span>A</span></a></li>
+                    <li class=""><a href="http://moje-lektire.tv-tube.net/lektire/slovo/b" title="B"><span>B</span></a></li>
+                    <li class=""><a href="http://moje-lektire.tv-tube.net/lektire/slovo/c" title="C"><span>C</span></a></li>
+                    <li class=""><a href="http://moje-lektire.tv-tube.net/lektire/slovo/cch" title="Č"><span>Č</span></a></li>
+                    <li class=""><a href="http://moje-lektire.tv-tube.net/lektire/slovo/ch" title="Ć"><span>Ć</span></a></li>
+                    <li class=""><a href="http://moje-lektire.tv-tube.net/lektire/slovo/d" title="D"><span>D</span></a></li>
+                    <li class=""><a href="http://moje-lektire.tv-tube.net/lektire/slovo/dzh" title="Dž"><span>Dž</span></a></li>
+                    <li class=""><a href="http://moje-lektire.tv-tube.net/lektire/slovo/dj" title="Đ"><span>Đ</span></a></li>
+                    <li class=""><a href="http://moje-lektire.tv-tube.net/lektire/slovo/e" title="E"><span>E</span></a></li>
+                    <li class=""><a href="http://moje-lektire.tv-tube.net/lektire/slovo/f" title="F"><span>F</span></a></li>
+                    <li class=""><a href="http://moje-lektire.tv-tube.net/lektire/slovo/g" title="G"><span>G</span></a></li>
+                    <li class=""><a href="http://moje-lektire.tv-tube.net/lektire/slovo/h" title="H"><span>H</span></a></li>
+                    <li class=""><a href="http://moje-lektire.tv-tube.net/lektire/slovo/i" title="I"><span>I</span></a></li>
+                    <li class=""><a href="http://moje-lektire.tv-tube.net/lektire/slovo/j" title="J"><span>J</span></a></li>
+                    <li class=""><a href="http://moje-lektire.tv-tube.net/lektire/slovo/k" title="K"><span>K</span></a></li>
+                    <li class=""><a href="http://moje-lektire.tv-tube.net/lektire/slovo/l" title="L"><span>L</span></a></li>
+                    <li class=""><a href="http://moje-lektire.tv-tube.net/lektire/slovo/lj" title="Lj"><span>Lj</span></a></li>
+                    <li class=""><a href="http://moje-lektire.tv-tube.net/lektire/slovo/m" title="M"><span>M</span></a></li>
+                    <li class=""><a href="http://moje-lektire.tv-tube.net/lektire/slovo/n" title="N"><span>N</span></a></li>
+                    <li class=""><a href="http://moje-lektire.tv-tube.net/lektire/slovo/nj" title="Nj"><span>Nj</span></a></li>
+                    <li class=""><a href="http://moje-lektire.tv-tube.net/lektire/slovo/o" title="O"><span>O</span></a></li>
+                    <li class=""><a href="http://moje-lektire.tv-tube.net/lektire/slovo/p" title="P"><span>P</span></a></li>
+                    <li class=""><a href="http://moje-lektire.tv-tube.net/lektire/slovo/q" title="Q"><span>Q</span></a></li>
+                    <li class=""><a href="http://moje-lektire.tv-tube.net/lektire/slovo/r" title="R"><span>R</span></a></li>
+                    <li class=""><a href="http://moje-lektire.tv-tube.net/lektire/slovo/s" title="S"><span>S</span></a></li>
+                    <li class=""><a href="http://moje-lektire.tv-tube.net/lektire/slovo/sh" title="Š"><span>Š</span></a></li>
+                    <li class=""><a href="http://moje-lektire.tv-tube.net/lektire/slovo/t" title="T"><span>T</span></a></li>
+                    <li class=""><a href="http://moje-lektire.tv-tube.net/lektire/slovo/u" title="U"><span>U</span></a></li>
+                    <li class=""><a href="http://moje-lektire.tv-tube.net/lektire/slovo/v" title="V"><span>V</span></a></li>
+                    <li class=""><a href="http://moje-lektire.tv-tube.net/lektire/slovo/w" title="W"><span>W</span></a></li>
+                    <li class=""><a href="http://moje-lektire.tv-tube.net/lektire/slovo/x" title="X"><span>X</span></a></li>
+                    <li class=""><a href="http://moje-lektire.tv-tube.net/lektire/slovo/y" title="Y"><span>Y</span></a></li>
+                    <li class=""><a href="http://moje-lektire.tv-tube.net/lektire/slovo/z" title="Z"><span>Z</span></a></li>
+                    <li class=""><a href="http://moje-lektire.tv-tube.net/lektire/slovo/zh" title="Ž"><span>Ž</span></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8">
+            <ul class="entries">
+                @foreach (var bookAuthor in Model.BookAuthors) {
+                    var routeValues = new { controller = "BookAuthors", bookAuthorId = bookAuthor.Id, bookAuthorNameSlug = bookAuthor.FullName.ToSlug() };
+                    <li>
+                        <h2>
+                            @Html.ActionLink(bookAuthor.FullName, "AuthorDetails", routeValues, new { title = String.Format("{0} - biografija pisca", bookAuthor.FullName) })
+                        </h2>
+                        <ul class="entry-meta">
+                            <li>Dostupno autorovih djela: 2</li>
+                            <li>Dostupno lektira: 2</li>
+                        </ul>
+                        <p>
+                            @bookAuthor.ShortBiography
+                            @Html.ActionLink("Pročitaj više", "AuthorDetails", routeValues, new { title = "Pročitaj više" })
+                        </p>
+                        <ul class="social-share">
+                            <li><a href="#" rel="external" class="facebook icon-facebook"></a></li>
+                            <li><a href="http://twitter.com/share?" rel="external" class="twitter icon-twitter" target="_blank"></a></li>
+                            <li><a href="https://www.linkedin.com/" rel="external" class="linkedin icon-linkedin" target="_blank"></a></li>
+                            <li><a href="http://www.reddit.com/" rel="external" class="reddit icon-reddit" target="_blank"></a></li>
+                        </ul>
+                    </li>
+                }
+            </ul>
+            <nav class="text-center">
+                @Html.PagedListPager(Model.BookAuthors, page =>
+                    page == 1
+                    ? Url.RouteUrl("BookAuthorsIndex")
+                    : Url.Action("Index", new { page }),
+                    new PagedListRenderOptions {
+                        LinkToFirstPageFormat = GeneralResource.PaginationFirstPage,
+                        LinkToLastPageFormat = GeneralResource.PaginationLastPage
+                    })
+            </nav>
+        </div> <!-- .col-md-8 -->
+        <div class="col-md-4"></div> <!-- .col-md-4 -->
+    </div> <!-- .row -->
+</div>

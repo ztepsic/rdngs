@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using System.Web.Mvc.Routing.Constraints;
 using System.Web.Routing;
 
 namespace Readings.Web {
@@ -7,19 +8,36 @@ namespace Readings.Web {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                name: "BookAuthor",
+                name: "BookAuthorsIndexWithPage",
+                url: "pisci/stranica/{page}",
+                defaults: new { controller = "BookAuthors", action = "Index" },
+                constraints: new {
+                    page = new CompoundRouteConstraint(new IRouteConstraint[] {
+                        new IntRouteConstraint(),
+                        new MinRouteConstraint(1)})
+                }
+            );
+
+            routes.MapRoute(
+                name: "BookAuthorsIndex",
+                url: "pisci",
+                defaults: new { controller = "BookAuthors", action = "Index", page = 1 }
+            );
+
+            routes.MapRoute(
+                name: "BookAuthorsAuthorDetails",
                 url: "pisac/{bookAuthorId}/{bookAuthorNameSlug}",
                 defaults: new { controller = "BookAuthors", action = "AuthorDetails" }
             );
 
             routes.MapRoute(
-                name: "Reading",
+                name: "ReadingsReading",
                 url: "lektira/{bookId}/{bookTitleSlug}/{readingVersion}",
                 defaults: new { controller = "Readings", action = "Reading" }
             );
 
             routes.MapRoute(
-                name: "Book",
+                name: "ReadingsBook",
                 url: "lektira/{bookId}/{bookTitleSlug}",
                 defaults: new { controller = "Readings", action = "Book" }
             );

@@ -68,9 +68,8 @@ ul.follow-us > li > a {
 }
 .letters-navigation {
   margin: 10px auto 0 auto;
-  background: url(img/bg-sub.gif) repeat-x 0 100%;
+  background: url('../img/bg-sub.gif') repeat-x 0 100%;
   overflow: hidden;
-  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 }
 .letters-navigation ul {
   margin: 0 auto;
@@ -79,30 +78,107 @@ ul.follow-us > li > a {
   display: block;
 }
 .letters-navigation ul li {
-  margin: 0 1px 0 0;
   float: left;
+  margin: 0 1px 0 0;
 }
 .letters-navigation ul span {
   padding: 0 9px;
   line-height: 26px;
   float: left;
   cursor: pointer;
-  background: url(img/bg-sub-r.gif) no-repeat 100% 0;
+  background: url('../img/bg-sub-r.gif') no-repeat 100% 0;
 }
 .letters-navigation ul a {
   color: #636363;
   font-size: 12px;
   float: left;
-  background: url(img/bg-sub-l.gif) no-repeat 0 0;
+  background: url('../img/bg-sub-l.gif') no-repeat 0 0;
 }
 .letters-navigation ul .active a,
 .letters-navigation ul a:hover {
   color: #000;
   text-decoration: none;
-  background: url(img/bg-sub-l-a.gif) no-repeat 0 0;
+  background: url('../img/bg-sub-l-a.gif') no-repeat 0 0;
 }
 .letters-navigation ul .active a span,
 .letters-navigation ul a:hover span {
-  background: url(img/bg-sub-r-a.gif) no-repeat 100% 0;
+  background: url('../img/bg-sub-r-a.gif') no-repeat 100% 0;
 }
-/*# sourceMappingURL=style.css.map */
+ul.entries h2 a {
+  color: #777777;
+}
+ul.entries h2 a:hover {
+  color: #f87100;
+}
+ul.entries {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+ul.entries li {
+  margin: 10px 0 20px 0;
+  padding: 0 0 10px 0;
+  width: 100%;
+}
+ul.entry-meta {
+  list-style: none;
+  margin: 5px 0 7px 0;
+  padding: 0;
+}
+ul.entry-meta li {
+  display: inline;
+  margin: 0;
+  padding: 0 10px 0 0;
+  color: #949494;
+  font-size: 95%;
+}
+img.thumbnail,
+img.thumbnail-small {
+  border: 1px solid #e1e1e1;
+  padding: 2px;
+  margin: 0 5px 0 0;
+  background: #fff;
+  text-align: center;
+}
+img.thumbnail {
+  width: 80px;
+}
+img.thumbnail-small {
+  width: 50px;
+  max-height: 80px;
+}
+img.thumbnail:hover,
+img.thumbnail-small:hover {
+  border-color: #b1b1b1;
+}
+/* ###### ENTRIES ##### END ###### */
+/* ###### READINGS and READING-LINKS ##### BEGIN ###### */
+/*
+
+ul#readings,
+ul#reading-links {
+	background: #fcfcfd;
+	margin: 10px 0;
+	padding: 0;
+	list-style: none;
+	border: 1px solid #EFEFEF;
+}
+
+ul#readings li,
+ul#reading-links li {
+	margin: 0;
+	padding: 10px 0 10px 40px;
+	border-bottom: 1px solid #EFEFEF;
+}
+
+ul#readings li {
+	background: url(img/pdf_icon_32x32.png) no-repeat left;
+}
+
+ul#reading-links li {
+	background: url(img/info_icon_32x32.png) no-repeat left;
+}
+
+*/
+/* ###### READINGS and READING-LINKS ##### END ###### */

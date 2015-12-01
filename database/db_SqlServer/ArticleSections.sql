@@ -3,8 +3,8 @@ create table dbo.ArticleSections (
 	Id int identity(1, 1)
 		constraint PK_ArticleSection_Id primary key
 ,	ParentId int
-,	Title nvarchar(30) not null
-,	Content ntext not null
+,	Title nvarchar(100) not null
+,	Content ntext
 ,	Level int not null default 0
 ,	[Order] int not null default 1
 ,	constraint FK_ArticleSection_ParentId

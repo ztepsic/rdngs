@@ -1,0 +1,17 @@
+﻿[
+    {
+        "outputFile": "assets/css/style.css",
+        "inputFile": "assets/css/less/style.less",
+        "options": {
+            "rootPath": "../"
+        }
+    },
+    {
+        "outputFile": "assets/css/bootstrap.css",
+        "inputFile": "assets/css/less/bootstrap.less",
+        "options": {
+            "rootPath": "./",
+            "relativeUrls": false
+        }
+    }
+]

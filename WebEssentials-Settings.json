@@ -90,7 +90,8 @@
     "MinifyKnockoutBindingExpressions": false,
     "OutputDirectory": null,
     "ProcessableScriptTypeList": null,
-    "RunOnBuild": false
+    "RunOnBuild": false,
+    "EnableMicrodataValidation": true
   },
   "JavaScript": {
     "AutoMinify": true,
@@ -116,7 +117,8 @@
     "OutputDirectory": "../",
     "ProcessSourceMapsForEditorEnhancements": true,
     "ShowPreviewPane": true,
-    "StrictMath": false
+    "StrictMath": false,
+    "AdjustRelativePaths": true
   },
   "LiveScript": {
     "CompileOnBuild": false,
@@ -139,7 +141,8 @@
     "MinifyInPlace": false,
     "OutputDirectory": null,
     "ShowPreviewPane": true,
-    "StrictBoldItalic": false
+    "StrictBoldItalic": false,
+    "GlobalPreviewCSSFile": null
   },
   "Scss": {
     "CompileOnBuild": false,

@@ -107,9 +107,8 @@ ul.follow-us > li > a {
 
 .letters-navigation {
 	margin: 10px auto 0 auto;
-	background: url(../img/bg-sub.gif) repeat-x 0 100%;
+	background: url('@{img-path}/bg-sub.gif') repeat-x 0 100%;
 	overflow: hidden;
-	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 }
 
 .letters-navigation ul {
@@ -122,7 +121,6 @@ ul.follow-us > li > a {
 .letters-navigation ul li {
 	float: left;
 	margin: 0 1px 0 0;
-	float: left;
 }
 
 .letters-navigation ul span {
@@ -130,87 +128,65 @@ ul.follow-us > li > a {
 	line-height: 26px;
 	float: left;
 	cursor: pointer;
-	background: url(../img/bg-sub-r.gif) no-repeat 100% 0;
+	background: url('@{img-path}/bg-sub-r.gif') no-repeat 100% 0;
 }
 
 .letters-navigation ul a{
 	color: #636363;
 	font-size: 12px;
 	float: left;
-	background: url(../img/bg-sub-l.gif) no-repeat 0 0;
+	background: url('@{img-path}/bg-sub-l.gif') no-repeat 0 0;
 }
 
 .letters-navigation ul .active a,
 .letters-navigation ul a:hover {
 	color: #000;
 	text-decoration: none;
-	background: url(../img/bg-sub-l-a.gif) no-repeat 0 0;
+	background: url('@{img-path}/bg-sub-l-a.gif') no-repeat 0 0;
 }
 .letters-navigation ul .active a span,
 .letters-navigation ul a:hover span {
-	background: url(../img/bg-sub-r-a.gif) no-repeat 100% 0;
+	//background: url(../img/bg-sub-r-a.gif) no-repeat 100% 0;
+	background: url('@{img-path}/bg-sub-r-a.gif') no-repeat 100% 0;
 }
 
+//
+// Entries
+// --------------------------------------------------
 
-/*
 
-h2.author {
-	background: url(../img/user.png) no-repeat center left;
-	padding-left: 28px;
+ul.entries h2 a {
+	color: @gray-light;
 }
 
-h2.book {
-	background: url(../img/book.jpg) no-repeat center left;
-	padding-left: 28px;	
-}
-
-#book h2 {
-	font-size: 1.2em;
-	border-bottom: none;
-}
-
-#book h3 {
-	font-size: 1em;
-}
-
-#book h4 {
-	font-size: 0.9em;
-}
-
-*/
-
-
-/* ###### ENTRIES ##### BEGIN ###### */
-/*
-ul.entries h2 {
-	font-size: 1.2em;
-	border-bottom: 1px solid #E1E1E1;
+ul.entries h2 a:hover {
+    color: @link-hover-color;
 }
 
 ul.entries {
 	list-style: none;
-	margin: 0px;
-	padding: 0px;
+	margin: 0;
+	padding: 0;
 	width: 100%;
 }
 
-ul.entries li.entry {
-	margin: 10px 0px 20px 0;
-	padding: 0px 0 10px 0;
+ul.entries li {
+	margin: 10px 0 20px 0;
+	padding: 0 0 10px 0;
 	width: 100%;
 }
 
 ul.entry-meta {
 	list-style: none;
 	margin: 5px 0 7px 0;
-	padding: 0px;
+	padding: 0;
 }
 
 
 ul.entry-meta li {
 	display: inline;
-	margin: 0px;
-	padding: 0px 10px 0px 0px;
+	margin: 0;
+	padding: 0 10px 0 0;
 	color: #949494;
 	font-size: 95%;
 }
@@ -218,18 +194,15 @@ ul.entry-meta li {
 img.thumbnail, img.thumbnail-small { 
 	border: 1px solid #e1e1e1;
 	padding: 2px;
-	margin: 0 5px 0 0px;
+	margin: 0 5px 0 0;
 	background: #fff;
 	text-align: center;
 }
 
 img.thumbnail { width: 80px; }
-
 img.thumbnail-small { width: 50px; max-height: 80px}
-
 img.thumbnail:hover, img.thumbnail-small:hover  { border-color: #b1b1b1; }
 
-*/
 
 /* ###### ENTRIES ##### END ###### */
 

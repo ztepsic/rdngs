@@ -5,17 +5,45 @@
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Lektire.CO - Lektire za osnovnu i srednju školu</title>
-        @Styles.Render("~/bundles/css")
-        @Scripts.Render("~/bundles/js/modernizr")
+        <title>@ViewBag.Title</title>
+        <meta name="description" content="@ViewBag.Description" />
+        
+        @*<meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="" />
+        <meta name="twitter:title" content="" />
+        <meta name="twitter:image" content="" />
+        <meta name="twitter:description" content="" />
+
+        <meta property="og:title" content="" />
+        <meta property="og:image" content="" />
+        
+        <link rel="alternate" type="application/rss+xml" title="" href="" />
+        
+        <link rel="apple-touch-icon" type="image/x-icon" href="" sizes="57x57" />
+        <link rel="apple-touch-icon" type="image/x-icon" href="" sizes="114x114" />
+        <link rel="apple-touch-icon" type="image/x-icon" href="" sizes="144x144" />
+        <link rel="apple-touch-icon" type="image/x-icon" href="" sizes="60x60" />
+        <link rel="apple-touch-icon" type="image/x-icon" href="" sizes="120x120" />
+        <link rel="apple-touch-icon" type="image/x-icon" href="" sizes="76x76" />
+        <link rel="apple-touch-icon" type="image/x-icon" href="" sizes="152x152" />
+
+        <link rel="shortcut icon" type="image/x-icon" href="" sizes="196x196" />
+        <link rel="shortcut icon" type="image/x-icon" href="" sizes="160x160" />
+        <link rel="shortcut icon" type="image/x-icon" href="" sizes="96x96" />
+        <link rel="shortcut icon" type="image/x-icon" href="" sizes="32x32" />
+        <link rel="shortcut icon" type="image/x-icon" href="" sizes="16x16" />*@
+
+
+        @Styles.Render("~/assets/css/main")
+        @Scripts.Render("~/assets/js/modernizr")
     </head>
     <body>
         @Html.Partial("HeaderPartial")
         @RenderBody()
         @Html.Partial("FooterPartial")
 
-        @Scripts.Render("~/bundles/js/jquery")
-        @Scripts.Render("~/bundles/js/bootstrap")
+        @Scripts.Render("~/assets/js/jquery")
+        @Scripts.Render("~/assets/js/bootstrap")
         @RenderSection("scripts", required: false)
         @MiniProfiler.RenderIncludes()
     </body>

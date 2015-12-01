@@ -22,7 +22,7 @@ namespace Readings.Web {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class GeneralResource {
+    public class GeneralResource {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace Readings.Web {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Readings.Web.GeneralResource", typeof(GeneralResource).Assembly);
@@ -51,7 +51,7 @@ namespace Readings.Web {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,16 +63,34 @@ namespace Readings.Web {
         /// <summary>
         ///   Looks up a localized string similar to Naslovnica.
         /// </summary>
-        internal static string MainNavHome {
+        public static string MainNavHome {
             get {
                 return ResourceManager.GetString("MainNavHome", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Prva.
+        /// </summary>
+        public static string PaginationFirstPage {
+            get {
+                return ResourceManager.GetString("PaginationFirstPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Posljednja.
+        /// </summary>
+        public static string PaginationLastPage {
+            get {
+                return ResourceManager.GetString("PaginationLastPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Lektire.Co.
         /// </summary>
-        internal static string SiteName {
+        public static string SiteName {
             get {
                 return ResourceManager.GetString("SiteName", resourceCulture);
             }
@@ -81,7 +99,7 @@ namespace Readings.Web {
         /// <summary>
         ///   Looks up a localized string similar to Lektire za osnovnu i srednju školu.
         /// </summary>
-        internal static string SiteSlogan {
+        public static string SiteSlogan {
             get {
                 return ResourceManager.GetString("SiteSlogan", resourceCulture);
             }

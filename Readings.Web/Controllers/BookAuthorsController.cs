@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Web.Mvc;
+using PagedList;
 using Readings.Domain;
+using Readings.Web.Models.BookAuthors;
 using StackExchange.Profiling;
+using Zed.Web.Models;
 using Zed.Web.Transaction;
 
 namespace Readings.Web.Controllers {
@@ -38,9 +41,27 @@ namespace Readings.Web.Controllers {
         #region Actions
 
 
-        // GET: BookAuthors
-        public ActionResult Index() {
-            return View();
+        /// <summary>
+        /// Gets book authors list
+        /// </summary>
+        /// <param name="page">Page number</param>
+        /// <returns>Book authors list view</returns>
+        [UnitOfWork]
+        public ActionResult Index(int page = 1) {
+            var pageSize = 10;
+            var totalBookAuthors = bookAuthorsRepository.GetTotalNumberOfBookAuthors();
+
+            if (page > Decimal.Ceiling((decimal)totalBookAuthors/pageSize)) return new HttpNotFoundResult();
+
+            var bookAuthors = bookAuthorsRepository.GetAuthors(pageSize, pageSize * (page - 1));
+
+            var bookAuthorsPagedList = new StaticPagedList<BookAuthor>(bookAuthors, page, pageSize, totalBookAuthors);
+
+            var indexViewModel = new IndexViewModel() {
+                BookAuthors = bookAuthorsPagedList
+            };
+
+            return View("Index", indexViewModel);
         }
 
 
@@ -52,6 +73,7 @@ namespace Readings.Web.Controllers {
         /// <returns>Book author details</returns>
         [UnitOfWork]
         public ActionResult AuthorDetails(int bookAuthorId, string bookAuthorNameSlug) {
+
             var profiler = MiniProfiler.Current; // it's ok if this is null
             
             BookAuthor bookAuthor = null;
@@ -59,7 +81,16 @@ namespace Readings.Web.Controllers {
                 bookAuthor = bookAuthorsRepository.GetById(bookAuthorId);
             }
 
-            return View(bookAuthor);
+            var model = new BookAuthorDetailsViewModel {
+                BookAuthor = bookAuthor,
+                PageInfoModel = new PageInfoModel(bookAuthor.FullName) {
+                    Description = bookAuthor.ShortBiography
+                }
+            };
+
+            model.PageInfoModel.AddKeyword(bookAuthor.FullName);
+
+            return View(model);
         }
 
         #endregion

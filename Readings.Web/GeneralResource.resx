@@ -120,6 +120,12 @@
   <data name="MainNavHome" xml:space="preserve">
     <value>Naslovnica</value>
   </data>
+  <data name="PaginationFirstPage" xml:space="preserve">
+    <value>Prva</value>
+  </data>
+  <data name="PaginationLastPage" xml:space="preserve">
+    <value>Posljednja</value>
+  </data>
   <data name="SiteName" xml:space="preserve">
     <value>Lektire.Co</value>
   </data>

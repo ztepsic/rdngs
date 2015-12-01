@@ -3,7 +3,6 @@ using System.Linq;
 using Dapper;
 using Readings.Domain;
 using Zed.Data;
-using Zed.Domain;
 
 namespace Readings.Infrastructure.DataAccess {
     /// <summary>
@@ -29,6 +28,25 @@ namespace Readings.Infrastructure.DataAccess {
         #region Methods
 
         /// <summary>
+        /// Gets total number of book authors
+        /// </summary>
+        /// <param name="firstSurnameLetter">first suname letter of book author</param>
+        /// <returns>Total number of book authors</returns>
+        public int GetTotalNumberOfBookAuthors(string firstSurnameLetter = null) {
+            var query = @"
+                select count(*) totalNumberOfBookAuthors
+                from BookAuthors
+            ";
+
+            if (!string.IsNullOrEmpty(firstSurnameLetter)) {
+                query += "where Surname like '@FirstSurnameLetter%';";
+            }
+
+            return DbConnection.Query<int>(query, new { FirstSurnameLetter = firstSurnameLetter }, DbConnection.Transaction)
+                .SingleOrDefault();
+        }
+
+        /// <summary>
         /// Gets all persisted BookAuthor entities/aggregare roots
         /// ordered by identifier.
         /// </summary>
@@ -38,7 +56,25 @@ namespace Readings.Infrastructure.DataAccess {
                         select *
                         from BookAuthors
                         order by Id;
-                        ");
+                 ", null, DbConnection.Transaction);
+        }
+
+
+        /// <summary>
+        /// Gets book authors
+        /// </summary>
+        /// <param name="limit">Max number of book authors to fetch</param>
+        /// <param name="offset">Offset</param>
+        /// <returns>BookAuthors ordered by surname</returns>
+        public IEnumerable<BookAuthor> GetAuthors(int limit, int offset) {
+            return DbConnection.Query<BookAuthor>(@"
+                        select *
+                        from BookAuthors
+                        order by Surname
+                        offset @Offset rows
+                        fetch next @Limit rows only
+                        ;
+                 ", new { @Offset = offset, @Limit = limit }, DbConnection.Transaction);
         }
 
         /// <summary>

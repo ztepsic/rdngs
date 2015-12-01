@@ -17,11 +17,16 @@ namespace Readings.Web {
 
 
             //MiniProfiler.Settings.Results_List_Authorize = (httpRequest) => true;
-            var copy = ViewEngines.Engines.ToList();
-            ViewEngines.Engines.Clear();
-            foreach (var item in copy) {
-                ViewEngines.Engines.Add(new ProfilingViewEngine(item));
-            }
+
+            var ignoredPaths = MiniProfiler.Settings.IgnoredPaths.ToList();
+            ignoredPaths.Add("/__browserLink/");
+            MiniProfiler.Settings.IgnoredPaths = ignoredPaths.ToArray();
+
+            //var copy = ViewEngines.Engines.ToList();
+            //ViewEngines.Engines.Clear();
+            //foreach (var item in copy) {
+            //    ViewEngines.Engines.Add(new ProfilingViewEngine(item));
+            //}
             
 
         }

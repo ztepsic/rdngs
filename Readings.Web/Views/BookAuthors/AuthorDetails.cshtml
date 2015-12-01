@@ -1,7 +1,8 @@
-﻿@model Readings.Domain.BookAuthor
+﻿@model Readings.Web.Models.BookAuthors.BookAuthorDetailsViewModel
 
 @{
-    ViewBag.Title = "Reading " +  Model.FullName;
+    ViewBag.Title = Model.PageInfoModel.Title + " - biografija pisca | Lektire.CO";
+    ViewBag.Description = Model.PageInfoModel.Description;
 
 }
 
@@ -25,17 +26,18 @@
 
     <article class="row">
         <header class="col-md-12">
-            <h1>@Model.FullName</h1>
+            <h1>@Model.BookAuthor.FullName</h1>
         </header>
         <div class="col-md-8">
-            @Html.Raw(Model.Article.Content)
-            
-            @Html.Partial("_BookAuthorArticleSections", Model.Article.ChildSections)
-        
-            <footer>
-                Izvor: <a href="@Model.BiographySrcUrl" rel="nofollow" title="@Model.BiographySrcName">@Model.BiographySrcName</a>
-            </footer>
+            @if (Model.BookAuthor.Article != null) {
+                @Html.Raw(Model.BookAuthor.Article.Content)
 
+                @Html.Partial("_BookAuthorArticleSections", Model.BookAuthor.Article.ChildSections)
+
+                <footer>
+                    Izvor: <a href="@Model.BookAuthor.BiographySrcUrl" rel="nofollow" title="@String.Format("{0} - {1}", Model.BookAuthor.BiographySrcName, Model.BookAuthor.FullName)">@Model.BookAuthor.BiographySrcName</a>
+                </footer>
+            }
         </div> <!-- END .col-md-8 -->
         <aside class="col-md-4" style="background: #e6e7e8;">
             <section class="text-left">
